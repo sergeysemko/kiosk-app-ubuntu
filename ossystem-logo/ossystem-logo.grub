@@ -1,0 +1,3 @@
+if background_color 56,112,222,0; then
+  clear
+fi
