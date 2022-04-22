@@ -14,6 +14,8 @@ sudo apt-get install -y chromium-browser unclutter
 
 sudo apt-get install -y lightdm
 
+# sudo apt install util-linux # rtcwake
+
 # Display Server + Windows Manager
 sudo apt install xorg openbox -y
 
@@ -44,6 +46,5 @@ update-initramfs -u
 
 # suspend until a known time
 sudo cp ./suspend_until.sh /home/kiosk
-sudo echo "00 20 * * * /home/user/suspend_until 08:00" >> cron_bkp
-sudo crontab cron_bkp
-sudo rm cron_bkp
+sudo chmod +x /home/kiosk/suspend_until.sh
+crontab -l | { cat; echo "00 20 * * * /home/kiosk/suspend_until.sh 08:00"; } | crontab -
