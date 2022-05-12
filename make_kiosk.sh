@@ -12,6 +12,7 @@ echo "kiosk:123456" | sudo chpasswd
 # Unclutter removes the mouse cursor from the screen, giving it a clean look.
 sudo apt-get install -y chromium-browser unclutter
 
+# choose lightdm
 sudo apt-get install -y lightdm
 
 # sudo apt install util-linux # rtcwake
@@ -48,3 +49,5 @@ update-initramfs -u
 sudo cp ./suspend_until.sh /home/kiosk
 sudo chmod +x /home/kiosk/suspend_until.sh
 crontab -l | { cat; echo "00 20 * * * /home/kiosk/suspend_until.sh 08:00"; } | crontab -
+
+echo "kiosk  ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR='tee -a' visudo
